@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>diff  component message</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <style type="text/css">
+       
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script type="text/babel">
+        var SexComponent = React.createClass({
+          render: function(){
+            return (
+              <select onChange={this.props.onChangeSex}>
+                <option value="1">男</option>
+                <option value="2">女</option>
+              </select>
+            )
+          }
+        })
+        var NameandSex = React.createClass({
+          getInitialState: function(){
+            return{
+              name : this.props.name,
+              sex : ''
+            }
+          },
+          render: function(){
+            return(
+              <div>
+                <span>姓名</span>
+                <input type="text" name="name" placeholder='请输入姓名'  onChange={this.props.handValue} value={this.props.name} />
+                <SexComponent onChangeSex={this.props.handSex}/>
+              </div>
+            )
+           
+          }
+        })
+        var Box = React.createClass({
+          getInitialState: function(){
+            return{
+              name : 'ss',
+              sex  : '男'
+            }
+          },
+          handValue : function(e){
+            this.setState({name:''})
+            this.setState({name:e.target.value})
+          },
+          handSex:function(e){
+            this.setState({sex : (e.target.value == '1' ? '男' : '女') })
+          },
+          render: function(){
+            return(
+              <div>
+                <span>用户姓名：</span><span>{this.state.name}</span>
+                <br/>
+                <span>用户性别：</span><span>{this.state.sex}</span>
+                <NameandSex handValue={this.handValue} handSex={this.handSex} name={this.state.name}/>
+              </div>
+            )
+          }
+        })
+        ReactDOM.render(
+          <Box/>,document.getElementById('container')
+        )
+    </script>
+</body>
+</html>
