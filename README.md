@@ -1,6 +1,1 @@
-<<<<<<< HEAD
-# react-demo-test2
-=======
-# react-demo-test1
->>>>>>> 736e80bf425bffac64298970db706b3cbbd5f19f
-# react-demo-test2
+子组件和父组件之间的通信，都是通过父组件中的方法实现的。兄弟组件之间的通信也可以通过父组件作为桥梁，寻求效率更好的方法！！
